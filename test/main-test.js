@@ -33,17 +33,19 @@ describe('lcd-digits', function () {
             });
         });
 
-        describe('test showLCDDigits', function () {
+        describe('test generateLCDDigits', function () {
             var LCDArray = ['6', '1', '3'];
             var LCDTotalDigits = fixtures.loadLCDTotalDigits();
 
             it('Return correct expectDigits', function () {
 
-                expectDigits = '\n' + '._. ... ._. ' +
-                               '\n' + '|_. ..| ._| ' +
-                               '\n' + '|_| ..| ._| ';
+                expectDigits = [
+                    {key: "6", value: [["._."], ["|_."], ["|_|"]]},
+                    {key: "1", value: [["..."], ["..|"], ["..|"]]},
+                    {key: "3", value: [["._."], ["._|"], ["._|"]]}
+                ];
 
-                expect(main.showLCDDigits(LCDArray, LCDTotalDigits)).toEqual(expectDigits);
+                expect(main.generateLCDDigits(LCDArray, LCDTotalDigits)).toEqual(expectDigits);
             });
         });
     });
